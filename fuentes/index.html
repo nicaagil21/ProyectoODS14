@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vida submarina</title>
+    <script src="js/modelo/script.js"></script>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <div id="menu">
+        <button id="botonFormulario"> IR A FORMULARIO</button>
+        <button id="botonListado">IR A LISTADO</button>
+    </div>
+
+
+    <div id="vistaFormulario">
+        <form id="formulario1" action="post">
+            <label for="nombre">Nombre:</label>
+                <input type="text"> <br>
+            <label for="fechaDeNacimiento">Fecha de nacimiento:</label>
+                <input type="date"  id="fechaNac">
+            <label for="sexo">Sexo:</label>
+                <select name="opciones" id="sexo">
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="otro">Otro</option>
+                </select>
+            <label>
+                <input type="checkbox" id="activo">
+                Activo en la limpieza y cuidados del medio ambiente marino.
+            </label>
+            <br>
+            <label for="">Añade una foto de tu cara</label>
+                <input type="file" id="imagenForm"> <br>
+            <label for="oceano">Selecciona el océano que quiera limpiar.</label>
+                <select name="" id="oceano">
+                    <option value="Atlántico">Atlántico</option>
+                    <option value="Pacífico">Pacífico</option>
+                    <option value="Índico">Índico</option>
+                    <option value="Ártico">Ártico</option>
+                </select>
+            <label for="descripcionPersonaje">Describe a tu personaje</label>
+                <textarea name="descripcionPersonaje" id="descripcionPersonaje"></textarea>
+        </form>
+    <script src="js/modelo/script.js"></script>
+        <button id="guardarPersonaje"> GUARDAR DATOS DE PERSONAJE </button> <br>
+        <button id="borrarPersonajes">BORRAR DATOS DE PERSONAJE</button> <br>
+        <button id="modificarPersonajes"> MODIFICAR PERSONAJE </button>
+
+    </div>
+
+    <br>
+
+    <div id="vistaListado">
+
+    </div>
+</body>
+</html>
