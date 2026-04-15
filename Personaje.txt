@@ -1,0 +1,6 @@
+ATRIBUTOS DEL PERSONAJE
+- nombre
+- fecha nacimiento
+- descripción
+- sexo
+- activo en la limpieza del mar
