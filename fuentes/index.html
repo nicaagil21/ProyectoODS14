@@ -25,7 +25,7 @@
     <div id="vistaFormulario">
         <form id="formulario1" action="post">
             <label for="nombre">Nombre:</label>
-                <input type="text"> <br>
+                <input type="text" id="nombre"> <br>
             <label for="fechaDeNacimiento">Fecha de nacimiento:</label>
                 <input type="date"  id="fechaNac">
             <label for="sexo">Sexo:</label>
@@ -39,10 +39,10 @@
                 Activo en la limpieza y cuidados del medio ambiente marino.
             </label>
             <br>
-            <label for="">Añade una foto de tu cara</label>
+            <label for="imagenForm">Añade una foto de tu cara</label>
                 <input type="file" id="imagenForm"> <br>
             <label for="oceano">Selecciona el océano que quiera limpiar.</label>
-                <select name="" id="oceano">
+                <select name="oceano" id="oceano">
                     <option value="Atlántico">Atlántico</option>
                     <option value="Pacífico">Pacífico</option>
                     <option value="Índico">Índico</option>
@@ -62,7 +62,8 @@
     <div id="vistaListado">
         </div>
 
-    <script src="js/modelo/modelo.js"></script>
-    <script src="js/vistas/vistas.js"></script>
+    <script type="module" src="js/modelo/modelo.js"></script>
+    <script type="module" src="js/vistas/vistas.js"></script>
+    <script type="module" src="js/controladores/controladores.js"></script>
 </body>
 </html>
