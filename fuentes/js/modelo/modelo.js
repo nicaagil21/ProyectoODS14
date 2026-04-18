@@ -11,23 +11,18 @@ class Personaje {
     }
 }
 
-// ARRAY (base de datos en memoria)
 let personajes = [];
 
-// CREATE
 function crearPersonaje(personaje) {
     personajes.push(personaje);
 }
 
-// READ
 function obtenerPersonajes() {
     return personajes;
 }
 
-// UPDATE
 function actualizarPersonaje(id, datosNuevos) {
     let p = personajes.find(per => per.id === id);
-
     if (p) {
         p.nombre = datosNuevos.nombre;
         p.fechaNacimiento = datosNuevos.fechaNacimiento;
@@ -39,7 +34,6 @@ function actualizarPersonaje(id, datosNuevos) {
     }
 }
 
-// DELETE
 function eliminarPersonaje(id) {
     personajes = personajes.filter(p => p.id !== id);
 }

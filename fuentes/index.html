@@ -15,6 +15,10 @@
     <div id="menu">
         <button id="botonFormulario"> IR A FORMULARIO</button>
         <button id="botonListado">IR A LISTADO</button>
+        <button id="botonJugar">JUGAR</button>
+        <button id="botonNoticias">NOTICIAS</button>
+        <button id="botonContacto">CONTACTO</button>
+
     </div>
 
     <div id="cuerpoMenu">
@@ -25,7 +29,7 @@
     <div id="vistaFormulario">
         <form id="formulario1" action="post">
             <label for="nombre">Nombre:</label>
-                <input type="text"> <br>
+                <input type="text" id="nombre"> <br>
             <label for="fechaDeNacimiento">Fecha de nacimiento:</label>
                 <input type="date"  id="fechaNac">
             <label for="sexo">Sexo:</label>
@@ -39,10 +43,10 @@
                 Activo en la limpieza y cuidados del medio ambiente marino.
             </label>
             <br>
-            <label for="">Añade una foto de tu cara</label>
+            <label for="imagenForm">Añade una foto de tu cara</label>
                 <input type="file" id="imagenForm"> <br>
             <label for="oceano">Selecciona el océano que quiera limpiar.</label>
-                <select name="" id="oceano">
+                <select name="oceano" id="oceano">
                     <option value="Atlántico">Atlántico</option>
                     <option value="Pacífico">Pacífico</option>
                     <option value="Índico">Índico</option>
@@ -57,12 +61,25 @@
         <button id="modificarPersonajes"> MODIFICAR PERSONAJE </button>
     </div>
 
+    <div id="vistaNoticias">
+        <h2>Noticias sobre la vida submarina</h2>
+    </div>
+
+    <div id="vistaContacto">
+        <h2>Contacto</h2>
+    </div>
+
+    <div id="vistaJugar">
+        <h2>Jugar</h2>
+    </div>
+    
     <br>
 
     <div id="vistaListado">
         </div>
 
-    <script src="js/modelo/modelo.js"></script>
-    <script src="js/vistas/vistas.js"></script>
+<script src="js/modelo/modelo.js"></script>
+<script src="js/vistas/vistas.js"></script>
+<script src="js/controladores/controladores.js"></script>
 </body>
 </html>
