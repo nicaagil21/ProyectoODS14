@@ -1,3 +1,4 @@
+const botonInicio = document.querySelector('#botonInicio');
 const botonFormulario = document.querySelector('#botonFormulario');
 const botonListado = document.querySelector('#botonListado');
 const botonJugar = document.querySelector('#botonJugar');
@@ -21,6 +22,7 @@ function mostrarVista(seccion) {
     seccion.style.display = 'block';
 }
 
+botonInicio.onclick = () => mostrarVista(cuerpoMenu);
 botonFormulario.onclick = () => mostrarVista(vistaFormulario);
 botonListado.onclick = () => mostrarVista(vistaListado);
 botonJugar.onclick = () => mostrarVista(vistaJugar);

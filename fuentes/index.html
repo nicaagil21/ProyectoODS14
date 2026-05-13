@@ -13,6 +13,7 @@
     </header>
 
     <div id="menu">
+        <button id="botonInicio">INICIO</button>
         <button id="botonFormulario"> IR A FORMULARIO</button>
         <button id="botonListado">IR A LISTADO</button>
         <button id="botonJugar">JUGAR</button>
@@ -63,10 +64,59 @@
 
     <div id="vistaNoticias">
         <h2>Noticias sobre la vida submarina</h2>
+        <p>En esta sección encontrarás las últimas noticias relacionadas con la vida submarina, incluyendo avances en la conservación, descubrimientos científicos y eventos importantes.</p>
+
+        <div class="bloque-noticias">
+            <h3 class="titulo-bloque bueno">✅ Las buenas noticias</h3>
+                <ul>
+                    <li>
+                        <p>En España, en 2023 se reciclaron el 74,2% de los envases de plástico, latas, briks y envases de papel y cartón, superando con dos años de antelación los objetivos que Europa fijaba para 2025.</p>
+                        <span class="fuente">Pacto Mundial</span>
+                    </li>
+                    <li>
+                        <p>En los últimos años se han alcanzado hitos importantes como el Tratado de Alta Mar sobre biodiversidad marina, el objetivo de proteger el 30% de la superficie oceánica para 2030 (iniciativa 30x30) y esfuerzos globales para acabar con los subsidios a la pesca destructiva.</p>
+                        <span class="fuente">World Economic Forum</span>
+                    </li>
+                </ul>
+        </div>
+        
+        <div class="bloque-noticias">
+            <h3 class="titulo-bloque malo">😬 Las malas noticias</h3>
+                <ul>
+                    <li>
+                        <p>La contaminación marina está alcanzando niveles extremos: más de 17 millones de toneladas métricas contaminaban el océano en 2021, y se prevé que esa cifra se duplique o triplique para 2040.</p>
+                        <span class="fuente">United Nations</span>
+                    </li>
+                    <li>
+                        <p>En los últimos 140 años, el nivel global del mar ha subido entre 21 y 24 centímetros, y la sobrepesca ha provocado la desaparición de más de un tercio de las poblaciones mundiales de peces.</p>
+                        <span class="fuente">Iberdrola</span>
+                    </li>
+                    <li>
+                        <p>El ODS 14 sigue siendo el que menos recursos económicos recibe de todos los ODS. Se estima que se necesitan cerca de 150.000 millones de dólares anuales para cerrar la brecha de financiación.</p>
+                        <span class="fuente">World Economic Forum</span>
+                    </li>
+                </ul>
+        </div>
+
+        <div class="bloque-noticias destacado">
+            <h3 class="titulo-bloque especial">📅 Lo más reciente: Conferencia de la ONU sobre el Océano 2025</h3>
+                <p>En junio de 2025 se celebró en Niza (Francia) la 3ª Conferencia de la ONU sobre el Océano, con el tema <em>"Movilizar a todos los actores e incrementar las acciones para la conservación y uso sostenible del océano."</em> Fue un momento clave para que la comunidad internacional mostrara avances en el ODS 14.</p>
+            <span class="fuente">World Economic Forum</span>
+        </div>
     </div>
 
     <div id="vistaContacto">
         <h2>Contacto</h2>
+        <p>Para más información, puedes contactarnos a través de nuestro formulario de contacto o enviarnos un correo electrónico.</p>
+        <form id="formularioContacto" action="post">
+            <label for="nombreContacto">Nombre:</label>
+                <input type="text" id="nombreContacto"> <br>
+            <label for="emailContacto">Correo electrónico:</label>
+                <input type="email" id="emailContacto"> <br>
+            <label for="mensajeContacto">Mensaje:</label>
+                <textarea name="mensajeContacto" id="mensajeContacto"></textarea> <br>
+            <button id="enviarMensaje">Enviar mensaje</button>
+        </form>
     </div>
 
     <div id="vistaJugar">

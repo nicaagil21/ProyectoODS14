@@ -95,9 +95,13 @@ function renderizarPersonajes() {
         let descripcion = document.createElement("p");
         descripcion.textContent = p.descripcion;
 
-        let boton = document.createElement("button");
-        boton.textContent = "Eliminar";
-        boton.addEventListener("click", function () {
+        let activo = document.createElement("p");
+        activo.textContent = "Activo en la limpieza del océano: " + (p.activo ? "Sí" : "No");
+        div.appendChild(activo);
+		
+        let botonEliminar = document.createElement("button");
+        botonEliminar.textContent = "Eliminar";
+        botonEliminar.addEventListener("click", function () {
             eliminarUno(p.id);
         });
 
@@ -105,9 +109,10 @@ function renderizarPersonajes() {
         div.appendChild(fecha);
         div.appendChild(sexo);
         div.appendChild(oceano);
+        div.appendChild(activo);
         div.appendChild(descripcion);
-        div.appendChild(boton);
-
+        div.appendChild(botonEliminar);
+        
         contenedor.appendChild(div);
     });
 
