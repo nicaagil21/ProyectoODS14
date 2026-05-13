@@ -2,57 +2,56 @@ const botonGuardar = document.querySelector('#guardarPersonaje');
 const botonBorrar = document.querySelector('#borrarPersonajes');
 const botonModificar = document.querySelector('#modificarPersonajes');
 
+let personajeSeleccionadoId = null;
+
 // Crear
 botonGuardar.onclick = () => {
-    let nombre = document.querySelector("#nombre").value;
-    let fecha = document.querySelector("#fechaNac").value;
-    let sexo = document.querySelector("#sexo").value;
-    let activo = document.querySelector("#activo").checked;
-    let imagen = document.querySelector("#imagenForm").value;
-    let oceano = document.querySelector("#oceano").value;
-    let descripcion = document.querySelector("#descripcionPersonaje").value;
+    let datos = recogerDatosFormulario();
 
-    if (nombre === "" || fecha === "" || sexo === "" || oceano === "" || descripcion === "") {
+    if (!validarDatos(datos)) {
         alert("Todos los campos son obligatorios");
-        console.log("Todos los campos son obligatorios");
         return;
     }
 
     let nuevo = new Personaje(
         Date.now(),
-        nombre,
-        fecha,
-        sexo,
-        activo,
-        imagen,
-        oceano,
-        descripcion
+        datos.nombre,
+        datos.fechaNacimiento,
+        datos.sexo,
+        datos.activo,
+        datos.imagen,
+        datos.oceano,
+        datos.descripcion
     );
 
     crearPersonaje(nuevo);
-    console.log("Personaje creado:", nuevo);
     renderizarPersonajes();
     mostrarVista(vistaListado);
 };
 
 // Borrar todos
 botonBorrar.onclick = () => {
-    personajes = [];
-    console.log("Todos los personajes eliminados");
+    listaPersonajes = [];
     renderizarPersonajes();
     mostrarVista(vistaListado);
 };
 
-// Actualizar
+// Modificar
 botonModificar.onclick = () => {
-    let lista = obtenerPersonajes();
-    if (lista.length === 0) {
-        console.log("No hay personajes para modificar");
+    if (personajeSeleccionadoId === null) {
+        console.log("No hay personaje seleccionado");
         return;
     }
 
-    let id = lista[0].id;
-    let datosNuevos = {
+    let datos = recogerDatosFormulario();
+    actualizarPersonaje(personajeSeleccionadoId, datos);
+    renderizarPersonajes();
+    mostrarVista(vistaListado);
+};
+
+// Funciones auxiliares
+function recogerDatosFormulario() {
+    return {
         nombre: document.querySelector("#nombre").value,
         fechaNacimiento: document.querySelector("#fechaNac").value,
         sexo: document.querySelector("#sexo").value,
@@ -61,20 +60,26 @@ botonModificar.onclick = () => {
         oceano: document.querySelector("#oceano").value,
         descripcion: document.querySelector("#descripcionPersonaje").value
     };
+}
 
-    actualizarPersonaje(id, datosNuevos);
-    console.log("Personaje modificado");
-    renderizarPersonajes();
-    mostrarVista(vistaListado);
-};
+function validarDatos(datos) {
+    return datos.nombre !== "" &&
+           datos.fechaNacimiento !== "" &&
+           datos.sexo !== "" &&
+           datos.oceano !== "" &&
+           datos.descripcion !== "";
+}
 
 // Renderizar listado
 function renderizarPersonajes() {
     let contenedor = document.querySelector("#vistaListado");
-    contenedor.textContent = "";
+    contenedor.innerHTML = "";
 
     let lista = obtenerPersonajes();
-    lista.forEach(p => {
+
+    for (let i = 0; i < lista.length; i++) {
+        let p = lista[i];
+
         let div = document.createElement("div");
         div.style.border = "1px solid black";
         div.style.margin = "10px";
@@ -92,18 +97,26 @@ function renderizarPersonajes() {
         let oceano = document.createElement("p");
         oceano.textContent = "Océano: " + p.oceano;
 
+        let activo = document.createElement("p");
+        activo.textContent = "Activo en la limpieza del océano: " + (p.activo ? "Sí" : "No");
+
         let descripcion = document.createElement("p");
         descripcion.textContent = p.descripcion;
 
-        let activo = document.createElement("p");
-        activo.textContent = "Activo en la limpieza del océano: " + (p.activo ? "Sí" : "No");
-        div.appendChild(activo);
-		
+        let botonEditar = document.createElement("button");
+        botonEditar.textContent = "Editar";
+        botonEditar.onclick = function () {
+            personajeSeleccionadoId = p.id;
+            cargarDatosEnFormulario(p);
+            mostrarVista(vistaFormulario);
+        };
+
         let botonEliminar = document.createElement("button");
         botonEliminar.textContent = "Eliminar";
-        botonEliminar.addEventListener("click", function () {
-            eliminarUno(p.id);
-        });
+        botonEliminar.onclick = function () {
+            eliminarPersonaje(p.id);
+            renderizarPersonajes();
+        };
 
         div.appendChild(h3);
         div.appendChild(fecha);
@@ -111,16 +124,18 @@ function renderizarPersonajes() {
         div.appendChild(oceano);
         div.appendChild(activo);
         div.appendChild(descripcion);
+        div.appendChild(botonEditar);
         div.appendChild(botonEliminar);
-        
-        contenedor.appendChild(div);
-    });
 
-    console.log("Listado actualizado");
+        contenedor.appendChild(div);
+    }
 }
 
-function eliminarUno(id) {
-    eliminarPersonaje(id);
-    console.log("Eliminado personaje con id:", id);
-    renderizarPersonajes();
+function cargarDatosEnFormulario(p) {
+    document.querySelector("#nombre").value = p.nombre;
+    document.querySelector("#fechaNac").value = p.fechaNacimiento;
+    document.querySelector("#sexo").value = p.sexo;
+    document.querySelector("#activo").checked = p.activo;
+    document.querySelector("#oceano").value = p.oceano;
+    document.querySelector("#descripcionPersonaje").value = p.descripcion;
 }

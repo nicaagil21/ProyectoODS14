@@ -9,31 +9,49 @@ class Personaje {
         this.oceano = oceano;
         this.descripcion = descripcion;
     }
+
+    actualizar(datos) {
+        this.nombre = datos.nombre;
+        this.fechaNacimiento = datos.fechaNacimiento;
+        this.sexo = datos.sexo;
+        this.activo = datos.activo;
+        this.imagen = datos.imagen;
+        this.oceano = datos.oceano;
+        this.descripcion = datos.descripcion;
+    }
 }
 
-let personajes = [];
+let listaPersonajes = [];
 
 function crearPersonaje(personaje) {
-    personajes.push(personaje);
+    listaPersonajes.push(personaje);
 }
 
 function obtenerPersonajes() {
-    return personajes;
+    return listaPersonajes;
+}
+
+function buscarPersonaje(id) {
+    for (let i = 0; i < listaPersonajes.length; i++) {
+        if (listaPersonajes[i].id === id) {
+            return listaPersonajes[i];
+        }
+    }
+    return null;
 }
 
 function actualizarPersonaje(id, datosNuevos) {
-    let p = personajes.find(per => per.id === id);
-    if (p) {
-        p.nombre = datosNuevos.nombre;
-        p.fechaNacimiento = datosNuevos.fechaNacimiento;
-        p.sexo = datosNuevos.sexo;
-        p.activo = datosNuevos.activo;
-        p.imagen = datosNuevos.imagen;
-        p.oceano = datosNuevos.oceano;
-        p.descripcion = datosNuevos.descripcion;
+    let personaje = buscarPersonaje(id);
+    if (personaje !== null) {
+        personaje.actualizar(datosNuevos);
     }
 }
 
 function eliminarPersonaje(id) {
-    personajes = personajes.filter(p => p.id !== id);
+    for (let i = 0; i < listaPersonajes.length; i++) {
+        if (listaPersonajes[i].id === id) {
+            listaPersonajes.splice(i, 1);
+            break;
+        }
+    }
 }

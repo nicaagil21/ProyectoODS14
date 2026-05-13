@@ -19,10 +19,11 @@ function mostrarVista(seccion) {
     vistaNoticias.style.display = 'none';
     vistaContacto.style.display = 'none';
     vistaJugar.style.display = 'none';
+
     seccion.style.display = 'block';
 }
 
-botonInicio.onclick = () => mostrarVista(cuerpoMenu);
+botonInicio.onclick = () => mostrarVista(vistaInicio);
 botonFormulario.onclick = () => mostrarVista(vistaFormulario);
 botonListado.onclick = () => mostrarVista(vistaListado);
 botonJugar.onclick = () => mostrarVista(vistaJugar);
