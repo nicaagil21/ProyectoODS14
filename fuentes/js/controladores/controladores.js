@@ -1,7 +1,9 @@
+/*Agarrar referencias a los botones de control*/
 const botonGuardar = document.querySelector('#guardarPersonaje');
 const botonBorrar = document.querySelector('#borrarPersonajes');
 const botonModificar = document.querySelector('#modificarPersonajes');
 
+// Variable para almacenar el ID del personaje seleccionado para modificar
 let personajeSeleccionadoId = null;
 
 // Crear
@@ -78,7 +80,7 @@ function renderizarPersonajes() {
     let lista = obtenerPersonajes();
 
     for (let i = 0; i < lista.length; i++) {
-        let p = lista[i];
+        let personaje = lista[i];
 
         let div = document.createElement("div");
         div.style.border = "1px solid black";
@@ -86,35 +88,35 @@ function renderizarPersonajes() {
         div.style.padding = "10px";
 
         let h3 = document.createElement("h3");
-        h3.textContent = p.nombre;
+        h3.textContent = personaje.nombre;
 
         let fecha = document.createElement("p");
-        fecha.textContent = "Fecha: " + p.fechaNacimiento;
+        fecha.textContent = "Fecha: " + personaje.fechaNacimiento;
 
         let sexo = document.createElement("p");
-        sexo.textContent = "Sexo: " + p.sexo;
+        sexo.textContent = "Sexo: " + personaje.sexo;
 
         let oceano = document.createElement("p");
-        oceano.textContent = "Océano: " + p.oceano;
+        oceano.textContent = "Océano: " + personaje.oceano;
 
         let activo = document.createElement("p");
-        activo.textContent = "Activo en la limpieza del océano: " + (p.activo ? "Sí" : "No");
+        activo.textContent = "Activo en la limpieza del océano: " + (personaje.activo ? "Sí" : "No");
 
         let descripcion = document.createElement("p");
-        descripcion.textContent = p.descripcion;
+        descripcion.textContent = personaje.descripcion;
 
         let botonEditar = document.createElement("button");
         botonEditar.textContent = "Editar";
         botonEditar.onclick = function () {
-            personajeSeleccionadoId = p.id;
-            cargarDatosEnFormulario(p);
+            personajeSeleccionadoId = personaje.id;
+            cargarDatosEnFormulario(personaje);
             mostrarVista(vistaFormulario);
         };
 
         let botonEliminar = document.createElement("button");
         botonEliminar.textContent = "Eliminar";
         botonEliminar.onclick = function () {
-            eliminarPersonaje(p.id);
+            eliminarPersonaje(personaje.id);
             renderizarPersonajes();
         };
 
@@ -131,11 +133,11 @@ function renderizarPersonajes() {
     }
 }
 
-function cargarDatosEnFormulario(p) {
-    document.querySelector("#nombre").value = p.nombre;
-    document.querySelector("#fechaNac").value = p.fechaNacimiento;
-    document.querySelector("#sexo").value = p.sexo;
-    document.querySelector("#activo").checked = p.activo;
-    document.querySelector("#oceano").value = p.oceano;
-    document.querySelector("#descripcionPersonaje").value = p.descripcion;
+function cargarDatosEnFormulario(personaje) {
+    document.querySelector("#nombre").value = personaje.nombre;
+    document.querySelector("#fechaNac").value = personaje.fechaNacimiento;
+    document.querySelector("#sexo").value = personaje.sexo;
+    document.querySelector("#activo").checked = personaje.activo;
+    document.querySelector("#oceano").value = personaje.oceano;
+    document.querySelector("#descripcionPersonaje").value = personaje.descripcion;
 }

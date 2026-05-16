@@ -1,3 +1,4 @@
+/*Agarrar referencias a los botones de navegación y las vistas*/
 const botonInicio = document.querySelector('#botonInicio');
 const botonFormulario = document.querySelector('#botonFormulario');
 const botonListado = document.querySelector('#botonListado');
@@ -5,12 +6,14 @@ const botonJugar = document.querySelector('#botonJugar');
 const botonNoticias = document.querySelector('#botonNoticias');
 const botonContacto = document.querySelector('#botonContacto');
 
+/*Agarrar referencias a las vistas*/
 const vistaInicio = document.querySelector('#cuerpoMenu');
 const vistaFormulario = document.querySelector('#vistaFormulario');
 const vistaListado = document.querySelector('#vistaListado');
 const vistaNoticias = document.querySelector('#vistaNoticias');
 const vistaContacto = document.querySelector('#vistaContacto');
 const vistaJugar = document.querySelector('#vistaJugar');
+
 
 function mostrarVista(seccion) {
     vistaInicio.style.display = 'none';
@@ -23,11 +26,24 @@ function mostrarVista(seccion) {
     seccion.style.display = 'block';
 }
 
-botonInicio.onclick = () => mostrarVista(vistaInicio);
-botonFormulario.onclick = () => mostrarVista(vistaFormulario);
-botonListado.onclick = () => mostrarVista(vistaListado);
-botonJugar.onclick = () => mostrarVista(vistaJugar);
-botonNoticias.onclick = () => mostrarVista(vistaNoticias);
-botonContacto.onclick = () => mostrarVista(vistaContacto);
+/*Sección para mostrar las vistas cada vez que se haga clic en un botón de navegación*/
+botonInicio.onclick = function() {
+    mostrarVista(vistaInicio);
+};
+botonFormulario.onclick = function() {
+    mostrarVista(vistaFormulario);
+};
+botonListado.onclick = function() {
+    mostrarVista(vistaListado);
+};
+botonJugar.onclick = function() {
+    mostrarVista(vistaJugar);
+};
+botonNoticias.onclick = function() {
+    mostrarVista(vistaNoticias);
+};
+botonContacto.onclick = function() {
+    mostrarVista(vistaContacto);
+};
 
 mostrarVista(vistaInicio);

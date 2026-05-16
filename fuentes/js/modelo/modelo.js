@@ -50,7 +50,7 @@ function actualizarPersonaje(id, datosNuevos) {
 function eliminarPersonaje(id) {
     for (let i = 0; i < listaPersonajes.length; i++) {
         if (listaPersonajes[i].id === id) {
-            listaPersonajes.splice(i, 1);
+            listaPersonajes.splice(i, 1); // Eliminar el personaje del array
             break;
         }
     }
